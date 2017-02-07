@@ -1,0 +1,75 @@
+!!!
+%html{:lang => "pt-br"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "images/share.png", :property => "og:image"}/
+    %meta{:content => "", :property => "og:title"}/
+    %meta{:content => "", :property => "og:description"}/
+    %title Univesp _Qual é o meu pensamento sobre a deficiência?
+    %meta{:content => "Univesp _Qual é o meu pensamento sobre a deficiência?", :property => "og:title"}/
+    %link{:href => "http://engenharia.cursos.univesp.br/sites/559adb369caf4dea7a002d7a/theme/others/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
+    %meta{:content => "Há muitas formas de olhar o mundo, a sociedade e, evidentemente, as pessoas com deficiência. Essa forma de ver as pessoas com deficiência vai mudando de acordo com o tempo, mas ainda hoje há uma mistura delas em cada um de nós. E isso influencia a maneira como tratamos essas pessoas e como agimos no nosso dia a dia. Quer ter uma prévia de como você pensa a respeito da deficiência? Faça este teste.", :name => "description", :property => "og:description"}/
+    %meta{:content => "pensamento, direitos, modelos mentais, pessoa com deficiência, modelo médico, modelo social, modelo caritativo,", :name => "keywords"}/
+    %meta{:content => "Univesp", :name => "author"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:href => "assets/stylesheets/style.css", :rel => "stylesheet"}/
+    / Google Fonts
+    %link{:href => "https://fonts.googleapis.com/css?family=Quicksand:300,400,700", :rel => "stylesheet"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800", :rel => "stylesheet"}/
+  %body
+    %input#ra{:type => 'hidden', :value => "#{@ra}"}
+    %nav
+      %div
+        %img{:alt => "Univesp Universidade Virtual do Estado de São Paulo", :src => "images/logo-univesp.png", :style => "margin-right: 30px", :tabindex => "0"}/
+        = succeed "." do
+          %a{:href => "http://creativecommons.org/licenses/by-nc-nd/4.0/", :rel => "license"}
+            %img{:alt => "Licença Creative Commons", :src => "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png", :style => "border-width:0", :tabindex => "0"}/
+        %h1{:style => "margin-left: 30px"} Qual é o meu pensamento sobre a deficiência?
+      %div
+        %h1{:tabindex => "0"} COMPARTILHAR
+    .scenes
+      .intro
+        .container
+          %h1{:tabindex => "0"} Qual é o meu pensamento sobre a deficiência?
+          %p{:tabindex => "0"} A seguir, estão disponíveis algumas situações a respeito da pessoa com deficiência. Selecione as frases que mais têm a ver com a sua forma de pensar frente a essas situações.
+          %button.btn.btn-lg.btn-start{:style => "margin-right: 15px", :tabindex => "0" } VAMOS LÁ!          
+      .container.quiz
+        .top
+          .description{:tabindex => "0"}
+          .score
+        .container.bottom.alternatives
+          %button.medico{:tabindex => "0", :name => "medico"} Alternativa A
+          %button.caritativo{:tabindex => "0", :name => "caritativo"} Alternativa B
+          %button.social{:tabindex => "0", :name => "social"} Alternativa C
+      .feedback
+        .container
+          %h1{:tabindex => "-1"} Esta é a cor do seu pensamento sobre deficiência.
+          %span Ela simboliza que
+          %p{:tabindex => "0"} você mostrou pensar de acordo com o:
+          %p.hide{:tabindex => "0"} Você mostrou pensar de acordo com o
+          .box{:tabindex => "0"}
+            %p.feedbackMedico
+              Modelo médico em
+              %span
+            %p.feedbackCaritativo
+              Modelo caritativo em
+              %span
+            %p.feedbackSocial
+              Modelo social em
+              %span
+          %p{:tabindex => "0"}
+            %strong Quer saber mais sobre cada um deles? Este é o foco da próxima parte deste módulo do curso.
+          %p{:tabindex => "0"} Atente-se às características de cada um destes modelos e pense o que fazer para melhorar seus pensamentos e atitudes a respeito da deficiência. Quando se deparar com determinada situação, você pode intervir de maneira mais segura e contribuir para que, de fato, ações e concepções sejam transformadas entre seus pares de trabalho, na família e na sociedade como um todo. Essas “formas de pensar” afetam a organização em que você atua e a sociedade ao seu redor.
+
+  %script{:src => "https://code.jquery.com/jquery-1.10.2.js"}
+  %script{:src => "https://code.jquery.com/ui/1.11.3/jquery-ui.js"}
+  %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
+  %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}
+  %script{:src => "assets/javascripts/questions.js"}
+  %script{:src => "assets/javascripts/analytics.js"}
+  %script{:src => "assets/javascripts/handtalk.js"}
