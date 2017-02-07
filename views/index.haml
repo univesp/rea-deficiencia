@@ -22,6 +22,17 @@
     %link{:href => "https://fonts.googleapis.com/css?family=Quicksand:300,400,700", :rel => "stylesheet"}/
     %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800", :rel => "stylesheet"}/
   %body
+
+    #fb-root
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
     %input#ra{:type => 'hidden', :value => "#{@ra}"}
     %nav
       %div
@@ -31,7 +42,8 @@
             %img{:alt => "Licença Creative Commons", :src => "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png", :style => "border-width:0", :tabindex => "0"}/
         %h1{:style => "margin-left: 30px"} Qual é o meu pensamento sobre a deficiência?
       %div
-        %h1{:tabindex => "0"} COMPARTILHAR
+        .fb-share-button{"data-href" => "https://apps.univesp.br/qual-e-o-meu-pensamento-sobre-a-deficiencia", "data-layout" => "button_count", "data-mobile-iframe" => "true"}
+          %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fapps.univesp.br%2Fqual-e-o-meu-pensamento-sobre-a-deficiencia&src=sdkpreparse", :target => "_blank"} Compartilhar
     .scenes
       .intro
         .container
