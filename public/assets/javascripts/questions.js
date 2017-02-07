@@ -2,6 +2,7 @@
 
 var questions = [];
 var resposta = new Object();
+var clicked = false;
 
 function new_question(descricao, foto, medico, caritativo, social){
   questions.push({
@@ -69,6 +70,7 @@ function initQuestion(){
   caritativo.text(questions[i].caritativo);
   social.text(questions[i].social);
   i++;
+  clicked = false;
   return i;
 }
 
@@ -84,8 +86,6 @@ var btnStart = $(".btn-start");
 
 function initRea(){
 
-  console.log("chamando initRea");
-
   feedback.hide();
   quiz.hide();
 
@@ -98,12 +98,9 @@ function initRea(){
       $("nav *").attr("tabindex", "-1");
     }, 500);
 
-    console.log("preenchendo dataInicio");
     resposta.ra = $("#ra").val();
     resposta.dataInicio = Date();
-    console.log(resposta);
   })
-
 }
 
 var maxColor = 255;
@@ -120,9 +117,7 @@ function changeColor(r = r, g = g, b = b){
 
 function showFeedback(){
 
-  console.log("showFeedback");
   resposta.dataTermino = Date();
-    
 
   if(r/colorByQuestion == 1){
     var valueCaritativo = r/colorByQuestion + " situação"
@@ -151,27 +146,7 @@ function showFeedback(){
   $(".feedbackCaritativo span").text(valueCaritativo);
   $(".feedbackSocial span").text(valueSocial);
 
-  console.log(resposta);
-
-
-  $.ajax({
-    type: "POST",
-    url: "submit",
-    data: resposta
-  })
-  .done(function(data) {
-    console.log("data");
-    console.log(data);
-  })
-  .fail(function (jqXHR, textStatus, error) {
-    console.log("jqXHR");
-    console.log(jqXHR);
-    console.log("textStatus");
-    console.log(textStatus);
-    console.log("error");
-    console.log(error);
-  })
-
+  submitResponse(resposta);
 };
 
 function checkClick() {
@@ -236,26 +211,49 @@ function randomOrder(){
 
 ///////
 
+function submitResponse(obj) {
+  $.ajax({
+    type: "POST",
+    url: "submit",
+    data: obj
+  })
+  .done(function(data) {
+    console.log("data");
+    console.log(data);
+  })
+  .fail(function (jqXHR, textStatus, error) {
+    console.log("jqXHR");
+    console.log(jqXHR);
+    console.log("textStatus");
+    console.log(textStatus);
+    console.log("error");
+    console.log(error);
+  })
+}
+
+///////
+
 initRea();
 
 var i = 0;
 initQuestion();
 
-alternative.on("click", function(){ 
+alternative.on("click", function(){
+  if (!clicked) {
+    clicked = true;
+    score.css("box-shadow","none");
+    $(this).blur();
 
-  score.css("box-shadow","none");
-  $(this).blur();
-
-  if($(this).hasClass("medico")){
-    g = g + colorByQuestion;
-  } else if($(this).hasClass("caritativo")){
-    r = r + colorByQuestion;
-  } else if($(this).hasClass("social")){
-    b = b + colorByQuestion;
+    if($(this).hasClass("medico")){
+      g = g + colorByQuestion;
+    } else if($(this).hasClass("caritativo")){
+      r = r + colorByQuestion;
+    } else if($(this).hasClass("social")){
+      b = b + colorByQuestion;
+    }
+    changeColor(r, g, b);
+    checkClick();
   }
-  changeColor(r, g, b);
-  checkClick();
-
 });
 
 
