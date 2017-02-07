@@ -124,21 +124,18 @@ function showFeedback(){
   } else {
     var valueCaritativo = r/colorByQuestion + " situações"
   }
-  resposta.caritativo = r/colorByQuestion;
 
   if(g/colorByQuestion == 1){
     var valueMedico = g/colorByQuestion + " situação"
   } else {
     var valueMedico = g/colorByQuestion + " situações"
   }
-  resposta.medico = g/colorByQuestion;
 
   if(b/colorByQuestion == 1){
     var valueSocial = b/colorByQuestion + " situação"
   } else {
     var valueSocial = b/colorByQuestion + " situações"
   }
-  resposta.social = b/colorByQuestion;
 
   feedback.fadeIn();
   feedback.css("background-color","rgb("+r+","+g+","+b+")");
@@ -244,14 +241,37 @@ alternative.on("click", function(){
     score.css("box-shadow","none");
     $(this).blur();
 
+    opcao = "";
     if($(this).hasClass("medico")){
       g = g + colorByQuestion;
+      opcao = "medico";
     } else if($(this).hasClass("caritativo")){
       r = r + colorByQuestion;
+      opcao = "caritativo";
     } else if($(this).hasClass("social")){
       b = b + colorByQuestion;
+      opcao = "social"
     }
     changeColor(r, g, b);
+
+    switch(clickCounter) {
+    case 0:
+        resposta.pergunta1 = opcao;
+        break;
+    case 1:
+        resposta.pergunta2 = opcao;
+        break;
+    case 2:
+        resposta.pergunta3 = opcao;
+        break;
+    case 3:
+        resposta.pergunta4 = opcao;
+        break;
+    case 4:
+        resposta.pergunta5 = opcao;
+        break;
+    }
+
     checkClick();
   }
 });

@@ -4,7 +4,9 @@ class Resposta
   field :ra
   field :dataInicio
   field :dataTermino
-  field :caritativo
-  field :medico  
-  field :social
+  field :pergunta1
+  field :pergunta2
+  field :pergunta3
+  field :pergunta4
+  field :pergunta5
 end

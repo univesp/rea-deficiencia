@@ -22,9 +22,11 @@ post '/submit' do
       :ra           => params['ra'],
       :dataInicio   => params['dataInicio'],
       :dataTermino  => params['dataTermino'],
-      :caritativo   => params['caritativo'],
-      :medico       => params['medico'],
-      :social       => params['social']
+      :pergunta1    => params['pergunta1'],
+      :pergunta2    => params['pergunta2'],
+      :pergunta3    => params['pergunta3'],
+      :pergunta4    => params['pergunta4'],
+      :pergunta5    => params['pergunta5']
     })
   rescue => e     
     return { :status => :exception, :message =>  e.message }.to_json
