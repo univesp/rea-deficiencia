@@ -14,14 +14,14 @@ configure do
 end
 
 get '/' do
-  @ra = Base64.decode64(params[:r]) if params[:r]
+  @ra = params[:r]
   haml :index
 end
 
 post '/submit' do
   begin
     Resposta.create!({
-      :ra           => params['ra'],
+      :ra           => Base64.decode64(params['ra']),
       :dataInicio   => params['dataInicio'],
       :dataTermino  => params['dataTermino'],
       :pergunta1    => params['pergunta1'],
