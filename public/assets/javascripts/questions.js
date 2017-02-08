@@ -213,19 +213,7 @@ function submitResponse(obj) {
     type: "POST",
     url: "submit",
     data: obj
-  })
-  .done(function(data) {
-    console.log("data");
-    console.log(data);
-  })
-  .fail(function (jqXHR, textStatus, error) {
-    console.log("jqXHR");
-    console.log(jqXHR);
-    console.log("textStatus");
-    console.log(textStatus);
-    console.log("error");
-    console.log(error);
-  })
+  });
 }
 
 ///////

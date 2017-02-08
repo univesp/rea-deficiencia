@@ -8,6 +8,8 @@ require_relative 'models/resposta'
 
 configure do
   set :environment, :production
+  enable :logging
+
   Mongoid.load!("./config/mongoid.yml")
 end
 
@@ -28,9 +30,13 @@ post '/submit' do
       :pergunta4    => params['pergunta4'],
       :pergunta5    => params['pergunta5']
     })
-  rescue => e     
-    return { :status => :exception, :message =>  e.message }.to_json
+    logger.info("REA-DEFICIENCIA :: Resposta enviada com sucesso! "\
+                "Parâmetros: #{params.inspect}. "\
+                "Usuário: #{request.user_agent}")
+  rescue => e
+    logger.fatal("REA-DEFICIENCIA :: Exceção ao enviar resposta: #{e.message}. "\
+                 "Parâmetros: #{params.inspect}. "\
+                 "Usuário: #{request.user_agent}")
   end
 
-  return { :status => :ok }.to_json 
 end
